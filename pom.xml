@@ -27,7 +27,7 @@
     </dependency>
   </dependencies>
   <build>
-    <defaultGoal>clean compile test package</defaultGoal>
+    <defaultGoal>clean compile test</defaultGoal>
     <plugins>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
@@ -47,6 +47,10 @@
             </goals>
           </execution>
         </executions>
+        <configuration>
+          <consoleOutput>true</consoleOutput>
+          <linkXRef>false</linkXRef>
+        </configuration>
       </plugin>
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
