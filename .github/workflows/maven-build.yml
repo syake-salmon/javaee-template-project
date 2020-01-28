@@ -1,9 +1,13 @@
 name: "Maven Build"
 
-on: [push]
+on: 
+  push:
+    branches:
+      - master
 
 jobs:
-  build:
+  setup:
+    name: Set up
     runs-on: ubuntu-latest
 
     steps:
@@ -15,11 +19,31 @@ jobs:
       with:
         java-version: 1.8
 
+  run_tests:
+    name: Run tests
+    needs: [setup]
+    runs-on: ubuntu-latest
+
+    steps:
     - name: Build with Maven
       run: mvn --file pom.xml
-        
-    - name: Upload coverage to Codecov
-      uses: codecov/codecov-action@v1
+
+    - name: Create cache
+      uses: actions/cache@v1
+      with:
+        path: ~/.m2/repository
+        key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
+        restore-keys: |
+          ${{ runner.os }}-maven-
+
+  upload_cov:
+    name: Upload coverage
+    needs: [setup, run_tests]
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Upload to codecov
+      uses: codecov/codecov-actions@v1
       with:
         token: ${{ secrets.CODECOV_TOKEN }}
         file: target/site/jacoco/jacoco.xml
