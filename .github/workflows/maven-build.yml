@@ -1,4 +1,4 @@
-name: "Maven Build"
+name: "Build"
 
 on: 
   push:
@@ -28,7 +28,7 @@ jobs:
     - name: Build with Maven
       run: mvn --file pom.xml
 
-    - name: Create cache
+    - name: Save cache
       uses: actions/cache@v1
       with:
         path: ~/.m2/repository
@@ -43,7 +43,7 @@ jobs:
 
     steps:
     - name: Upload to codecov
-      uses: codecov/codecov-actions@v1
+      uses: codecov/codecov-action@v1
       with:
         token: ${{ secrets.CODECOV_TOKEN }}
         file: target/site/jacoco/jacoco.xml
