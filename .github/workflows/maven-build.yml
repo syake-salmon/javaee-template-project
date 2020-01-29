@@ -28,7 +28,7 @@ jobs:
         java-version: 11
 
     - name: Run Maven verify
-      run: mvn clean verify --file pom.xml -Dsonar.login=${{ secrets.SONAR_TOKEN }} -Dsonar.github.oauth=${{ secrets.GITHUB_TOKEN }}
+      run: mvn clean verify --file pom.xml -Dsonar.login=${{ secrets.SONAR_TOKEN }} -Dsonar.github.login=${{ secrets.GITHUB_TOKEN }}
 
     - name: Upload to codecov
       uses: codecov/codecov-action@v1
