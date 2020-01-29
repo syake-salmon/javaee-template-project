@@ -27,8 +27,8 @@ jobs:
       with:
         java-version: 11
 
-    - name: Run tests
-      run: mvn clean test --file pom.xml -Dsonar.login=${{ secrets.SONAR_TOKEN }}
+    - name: Run Maven verify
+      run: mvn clean verify --file pom.xml -Dsonar.login=${{ secrets.SONAR_TOKEN }}
 
     - name: Upload to codecov
       uses: codecov/codecov-action@v1
