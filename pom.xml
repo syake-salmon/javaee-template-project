@@ -10,6 +10,7 @@
     <java.version>1.8</java.version>
     <maven.compiler.target>${java.version}</maven.compiler.target>
     <maven.compiler.source>${java.version}</maven.compiler.source>
+    <powermock.version>2.0.5</powermock.version>
   </properties>
   <repositories>
     <repository>
