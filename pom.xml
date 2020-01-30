@@ -15,7 +15,13 @@
     <sonar.projectKey>syake-salmon_${project.artifactId}</sonar.projectKey>
     <sonar.organization>syake-salmon</sonar.organization>
     <sonar.host.url>https://sonarcloud.io</sonar.host.url>
-    <sonar.exclusions>pom.xml</sonar.exclusions>
+    <sonar.sourceEncoding>${encoding}</sonar.sourceEncoding>
+    <sonar.java.binaries>${build.outputDirectory}</sonar.java.binaries>
+    <sonar.java.test.binaries>${build.testOutputDirectory}</sonar.java.test.binaries>
+    <sonar.java.checkstyle.reportPaths>${build.directory}/checkstyle-result.xml</sonar.java.checkstyle.reportPaths>
+    <sonar.java.spotbugs.reportPaths>${build.directory}/findbugsXml.xml</sonar.java.spotbugs.reportPaths>
+    <sonar.coverage.jacoco.xmlReportPaths>${build.reporting.outputDirectory}/jacoco/jacoco.xml</sonar.coverage.jacoco.xmlReportPaths>
+    <sonar.junit.reportPaths>${build.outputDirectory}/surefire-reports/*.xml</sonar.junit.reportPaths>
   </properties>
   <repositories>
     <repository>
