@@ -40,6 +40,14 @@
     </repository>
   </repositories>
   <dependencies>
+    <!-- JBoss JavaEE -->
+    <dependency>
+      <groupId>org.jboss.spec</groupId>
+      <artifactId>jboss-javaee-7.0</artifactId>
+      <version>1.1.1.Final</version>
+      <type>pom</type>
+      <scope>provided</scope>
+    </dependency>
     <!-- JUnit -->
     <dependency>
       <groupId>junit</groupId>
