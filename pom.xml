@@ -21,7 +21,7 @@
     <sonar.java.checkstyle.reportPaths>${project.build.directory}/checkstyle-result.xml</sonar.java.checkstyle.reportPaths>
     <sonar.java.spotbugs.reportPaths>${project.build.directory}/findbugsXml.xml</sonar.java.spotbugs.reportPaths>
     <sonar.coverage.jacoco.xmlReportPaths>${project.reporting.outputDirectory}/jacoco/jacoco.xml</sonar.coverage.jacoco.xmlReportPaths>
-    <sonar.junit.reportPaths>${project.build.outputDirectory}/surefire-reports</sonar.junit.reportPaths>
+    <sonar.junit.reportPaths>${project.build.directory}/surefire-reports/*.xml</sonar.junit.reportPaths>
   </properties>
   <repositories>
     <repository>
