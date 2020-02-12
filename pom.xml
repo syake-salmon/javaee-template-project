@@ -22,6 +22,7 @@
     <sonar.java.spotbugs.reportPaths>${project.build.directory}/findbugsXml.xml</sonar.java.spotbugs.reportPaths>
     <sonar.coverage.jacoco.xmlReportPaths>${project.reporting.outputDirectory}/jacoco/jacoco.xml</sonar.coverage.jacoco.xmlReportPaths>
     <sonar.junit.reportPaths>${project.build.directory}/surefire-reports</sonar.junit.reportPaths>
+    <webapp.lib.location>${basedir}/src/main/webapp</webapp.lib.location>
   </properties>
   <repositories>
     <repository>
