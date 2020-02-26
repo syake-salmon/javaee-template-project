@@ -11,7 +11,7 @@ import ch.qos.cal10n.MessageConveyor;
 /**
  * {@link LocLogger} provider.
  */
-public class LoggerFactory {
+public final class LoggerFactory {
 
     private LoggerFactory() {
         throw new IllegalStateException("Unsupported feature.");
@@ -22,7 +22,7 @@ public class LoggerFactory {
      * {@link LocLogger} will be named after the class. The {@link LocLogger}
      * will be localized by {@link Locale#getDefault()}.
      *
-     * @param clazz
+     * @param clazz {@link Class} for logger name
      * @return {@link LocLogger} instance by class
      */
     public static LocLogger getLogger(final Class<?> clazz) {
