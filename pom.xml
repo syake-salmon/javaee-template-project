@@ -2,7 +2,7 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.syakeApps</groupId>
-  <artifactId>java-template-project</artifactId>
+  <artifactId>javaee-template-project</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <packaging>war</packaging>
   <properties>
@@ -10,7 +10,7 @@
     <java.version>1.8</java.version>
     <maven.compiler.target>${java.version}</maven.compiler.target>
     <maven.compiler.source>${java.version}</maven.compiler.source>
-    <failOnMissingWebXml>false</failOnMissingWebXml>
+    <jboss.eap.version>7.1.6.GA</jboss.eap.version>
     <powermock.version>2.0.5</powermock.version>
     <sonar.projectKey>syake-salmon_${project.artifactId}</sonar.projectKey>
     <sonar.organization>syake-salmon</sonar.organization>
@@ -22,32 +22,74 @@
     <sonar.java.spotbugs.reportPaths>${project.build.directory}/spotbugsXml.xml</sonar.java.spotbugs.reportPaths>
     <sonar.coverage.jacoco.xmlReportPaths>${project.reporting.outputDirectory}/jacoco/jacoco.xml</sonar.coverage.jacoco.xmlReportPaths>
     <sonar.junit.reportPaths>${project.build.directory}/surefire-reports</sonar.junit.reportPaths>
-    <webapp.lib.location>${basedir}/src/main/webapp/WEB-INF/lib</webapp.lib.location>
   </properties>
   <repositories>
     <repository>
-      <id>jboss-eap-repository-group</id>
-      <name>JBoss EAP Maven Repository</name>
+      <id>jboss-enterprise-maven-repository</id>
       <url>https://maven.repository.redhat.com/ga/</url>
-      <layout>default</layout>
       <releases>
         <enabled>true</enabled>
-        <updatePolicy>never</updatePolicy>
       </releases>
       <snapshots>
-        <enabled>true</enabled>
-        <updatePolicy>never</updatePolicy>
+        <enabled>false</enabled>
       </snapshots>
     </repository>
   </repositories>
+  <pluginRepositories>
+    <pluginRepository>
+      <id>jboss-enterprise-maven-repository</id>
+      <url>https://maven.repository.redhat.com/ga/</url>
+      <releases>
+        <enabled>true</enabled>
+      </releases>
+      <snapshots>
+        <enabled>false</enabled>
+      </snapshots>
+    </pluginRepository>
+  </pluginRepositories>
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>org.jboss.spec</groupId>
+        <artifactId>jboss-javaee-7.0</artifactId>
+        <version>1.1.0.Final-redhat-5</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+      <dependency>
+        <groupId>org.jboss.bom</groupId>
+        <artifactId>eap-runtime-artifacts</artifactId>
+        <version>${jboss.eap.version}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+      <dependency>
+        <groupId>org.jboss.bom</groupId>
+        <artifactId>jboss-eap-javaee7</artifactId>
+        <version>${jboss.eap.version}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
   <dependencies>
-    <!-- JBoss JavaEE -->
+    <!-- Servlet -->
     <dependency>
-      <groupId>org.jboss.spec</groupId>
-      <artifactId>jboss-javaee-7.0</artifactId>
-      <version>1.1.1.Final</version>
-      <type>pom</type>
+      <groupId>org.jboss.spec.javax.servlet</groupId>
+      <artifactId>jboss-servlet-api_3.1_spec</artifactId>
       <scope>provided</scope>
+    </dependency>
+    <!-- Logging -->
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-ext</artifactId>
+    </dependency>
+    <!-- Logging -->
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-nop</artifactId>
+      <version>1.7.22</version>
+      <scope>test</scope>
     </dependency>
     <!-- JUnit -->
     <dependency>
@@ -74,6 +116,12 @@
       <groupId>org.jboss.weld</groupId>
       <artifactId>weld-junit4</artifactId>
       <version>2.0.1.Final</version>
+      <scope>test</scope>
+    </dependency>
+    <!-- H2 -->
+    <dependency>
+      <groupId>com.h2database</groupId>
+      <artifactId>h2</artifactId>
       <scope>test</scope>
     </dependency>
   </dependencies>
@@ -136,13 +184,14 @@
         <version>0.8.5</version>
         <executions>
           <execution>
+            <id>default-prepare-agent</id>
             <phase>clean</phase>
             <goals>
               <goal>prepare-agent</goal>
             </goals>
           </execution>
           <execution>
-            <id>report</id>
+            <id>default-report</id>
             <phase>prepare-package</phase>
             <goals>
               <goal>report</goal>
