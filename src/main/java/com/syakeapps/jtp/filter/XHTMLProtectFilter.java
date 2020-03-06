@@ -27,13 +27,14 @@ public class XHTMLProtectFilter implements Filter {
             .getLogger(XHTMLProtectFilter.class);
 
     @Override
-    public void init(FilterConfig filterConfig) throws ServletException {
+    public void init(final FilterConfig filterConfig) throws ServletException {
         // nop
     }
 
     @Override
-    public void doFilter(ServletRequest request, ServletResponse response,
-            FilterChain chain) throws IOException, ServletException {
+    public void doFilter(final ServletRequest request,
+            final ServletResponse response, final FilterChain chain)
+            throws IOException, ServletException {
         String path = ((HttpServletRequest) request).getServletPath();
         logger.debug("Request path => {}", path);
         if (path.endsWith(".xhtml")) {
