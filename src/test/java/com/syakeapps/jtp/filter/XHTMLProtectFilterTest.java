@@ -1,6 +1,7 @@
 package com.syakeapps.jtp.filter;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 
 import javax.servlet.FilterChain;
 import javax.servlet.http.HttpServletResponse;
@@ -26,9 +27,15 @@ public class XHTMLProtectFilterTest {
         /* SETUP */
 
         /* INVOCATION */
-        testTarget.init(null);
+        boolean isError = false;
+        try {
+            testTarget.init(null);
+        } catch (Exception | Error e) {
+            isError = true;
+        }
 
         /* ASSERTION */
+        assertFalse(isError);
     }
 
     @Test
@@ -69,9 +76,15 @@ public class XHTMLProtectFilterTest {
         /* SETUP */
 
         /* INVOCATION */
-        testTarget.destroy();
+        boolean isError = false;
+        try {
+            testTarget.destroy();
+        } catch (Exception | Error e) {
+            isError = true;
+        }
 
         /* ASSERTION */
+        assertFalse(isError);
     }
 
 }
