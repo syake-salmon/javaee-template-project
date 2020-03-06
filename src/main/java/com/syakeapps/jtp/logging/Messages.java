@@ -11,5 +11,5 @@ import ch.qos.cal10n.LocaleData;
 @LocaleData(defaultCharset = "UTF8",
         value = { @Locale("en_US"), @Locale("ja_JP") })
 public enum Messages {
-    EXAMPLE
+    WARN_ACCESS_TO_FORBIDDEN_RESOURCES;
 }
