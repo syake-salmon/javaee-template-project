@@ -153,6 +153,7 @@
           </execution>
         </executions>
         <configuration>
+          <skip>${skipTests}</skip>
           <configLocation>${basedir}/checkstyle-rule.xml</configLocation>
           <linkXRef>false</linkXRef>
         </configuration>
@@ -168,6 +169,9 @@
             <goals>
               <goal>spotbugs</goal>
             </goals>
+            <configuration>
+              <skip>${skipTests}</skip>
+            </configuration>
           </execution>
         </executions>
       </plugin>
