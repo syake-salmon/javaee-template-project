@@ -13,7 +13,6 @@ import ch.qos.cal10n.IMessageConveyor;
 
 public class LoggerFactoryTest {
 
-    // Test getting LocLogger that is localized by default locale.
     @Test
     public void test_getLogger() throws Exception {
         /* SETUP */

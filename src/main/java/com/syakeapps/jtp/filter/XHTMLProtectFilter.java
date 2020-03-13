@@ -20,7 +20,7 @@ import com.syakeapps.jtp.logging.Messages;
 /**
  * Filter for block direct access to XHTML resources.
  */
-@WebFilter(urlPatterns = "*")
+@WebFilter(urlPatterns = "/*")
 public class XHTMLProtectFilter implements Filter {
 
     private final LocLogger logger = LoggerFactory
@@ -50,5 +50,4 @@ public class XHTMLProtectFilter implements Filter {
     public void destroy() {
         // nop
     }
-
 }
