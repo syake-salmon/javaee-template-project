@@ -73,16 +73,28 @@
     </dependencies>
   </dependencyManagement>
   <dependencies>
+    <!-- Logging -->
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-ext</artifactId>
+    </dependency>
     <!-- Servlet -->
     <dependency>
       <groupId>org.jboss.spec.javax.servlet</groupId>
       <artifactId>jboss-servlet-api_3.1_spec</artifactId>
       <scope>provided</scope>
     </dependency>
-    <!-- Logging -->
+    <!-- JSF -->
     <dependency>
-      <groupId>org.slf4j</groupId>
-      <artifactId>slf4j-ext</artifactId>
+      <groupId>org.jboss.spec.javax.faces</groupId>
+      <artifactId>jboss-jsf-api_2.2_spec</artifactId>
+    </dependency>
+    <!-- CDI -->
+    <dependency>
+      <groupId>javax.enterprise</groupId>
+      <artifactId>cdi-api</artifactId>
+      <version>2.0.SP1</version><!--$NO-MVN-MAN-VER$ -->
+      <scope>provided</scope>
     </dependency>
     <!-- JUnit -->
     <dependency>
@@ -108,7 +120,31 @@
     <dependency>
       <groupId>org.jboss.weld</groupId>
       <artifactId>weld-junit4</artifactId>
-      <version>2.0.1.Final</version>
+      <version>2.0.1.Final</version><!--$NO-MVN-MAN-VER$ -->
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.jboss.weld</groupId>
+      <artifactId>weld-core-impl</artifactId>
+      <version>3.1.2.Final</version><!--$NO-MVN-MAN-VER$ -->
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.jboss.weld</groupId>
+      <artifactId>weld-spi</artifactId>
+      <version>3.1.SP1</version><!--$NO-MVN-MAN-VER$ -->
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.jboss.weld.probe</groupId>
+      <artifactId>weld-probe-core</artifactId>
+      <version>3.1.2.Final</version><!--$NO-MVN-MAN-VER$ -->
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.jboss.weld</groupId>
+      <artifactId>weld-api</artifactId>
+      <version>3.1.SP1</version><!--$NO-MVN-MAN-VER$ -->
       <scope>test</scope>
     </dependency>
     <!-- H2 -->
