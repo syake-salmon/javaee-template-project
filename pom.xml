@@ -78,6 +78,16 @@
       <groupId>org.slf4j</groupId>
       <artifactId>slf4j-ext</artifactId>
     </dependency>
+    <!-- Annotation -->
+    <dependency>
+      <groupId>org.jboss.spec.javax.annotation</groupId>
+      <artifactId>jboss-annotations-api_1.2_spec</artifactId>
+    </dependency>
+    <!-- Interceptor -->
+    <dependency>
+      <groupId>org.jboss.spec.javax.interceptor</groupId>
+      <artifactId>jboss-interceptors-api_1.2_spec</artifactId>
+    </dependency>
     <!-- Servlet -->
     <dependency>
       <groupId>org.jboss.spec.javax.servlet</groupId>

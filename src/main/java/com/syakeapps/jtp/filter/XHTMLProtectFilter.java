@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.slf4j.cal10n.LocLogger;
 
+import com.syakeapps.jtp.annotation.Trace;
 import com.syakeapps.jtp.logging.LoggerFactory;
 import com.syakeapps.jtp.logging.Messages;
 
@@ -23,7 +24,7 @@ import com.syakeapps.jtp.logging.Messages;
 @WebFilter(urlPatterns = "/*")
 public class XHTMLProtectFilter implements Filter {
 
-    private final LocLogger logger = LoggerFactory
+    private static final LocLogger LOG = LoggerFactory
             .getLogger(XHTMLProtectFilter.class);
 
     @Override
@@ -31,14 +32,15 @@ public class XHTMLProtectFilter implements Filter {
         // nop
     }
 
+    @Trace
     @Override
     public void doFilter(final ServletRequest request,
             final ServletResponse response, final FilterChain chain)
             throws IOException, ServletException {
         String path = ((HttpServletRequest) request).getServletPath();
-        logger.debug("Request path => {}", path);
+        LOG.debug("Request path => {}", path);
         if (path.endsWith(".xhtml")) {
-            logger.warn(Messages.WARN_ACCESS_TO_FORBIDDEN_RESOURCES, path);
+            LOG.warn(Messages.WARN_ACCESS_TO_FORBIDDEN_RESOURCES, path);
             ((HttpServletResponse) response)
                     .sendError(HttpServletResponse.SC_FORBIDDEN);
         } else {
