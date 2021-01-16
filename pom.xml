@@ -11,7 +11,7 @@
     <maven.compiler.target>${java.version}</maven.compiler.target>
     <maven.compiler.source>${java.version}</maven.compiler.source>
     <jboss.eap.version>7.1.6.GA</jboss.eap.version>
-    <powermock.version>2.0.5</powermock.version>
+    <powermock.version>2.0.9</powermock.version>
     <sonar.projectKey>syake-salmon_${project.artifactId}</sonar.projectKey>
     <sonar.organization>syake-salmon</sonar.organization>
     <sonar.host.url>https://sonarcloud.io</sonar.host.url>
@@ -108,15 +108,15 @@
     </dependency>
     <!-- JUnit -->
     <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>4.13</version>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter-api</artifactId>
+      <version>5.7.0</version>
       <scope>test</scope>
     </dependency>
     <!-- Powermock -->
     <dependency>
       <groupId>org.powermock</groupId>
-      <artifactId>powermock-module-junit4</artifactId>
+      <artifactId>powermock-core</artifactId>
       <version>${powermock.version}</version>
       <scope>test</scope>
     </dependency>
